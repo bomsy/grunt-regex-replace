@@ -1,7 +1,7 @@
 {
   "name": "grunt-regex-replace",
   "description": "Grunt plugin to search and replace text content of files based on regular expression patterns",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/bomsy/grunt-regex-replace",
   "author": {
     "name": "Hubert Boma Manilla",
@@ -32,6 +32,9 @@
     "grunt": "~0.3.17"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "regex",
+    "string",
+    "replace"
   ]
 }
