@@ -49,9 +49,9 @@ a flags property. An example af an object.
         flags:'gi'
       }
 ###search property
-A regular expression string defining the text to be found.
+A regular expression string defining the text contet to be found.
 ###replace property
-A string/ regular expression pattern to replace the texts content
+A string/ regular expression pattern to replace the text content.
 ###flags property
 Regular expressions options (ie gmi). if the flags property is not defined it defaults to 'g'. To specify no option set the
 flags to empty string (ie flags: '').
