@@ -15,6 +15,7 @@ grunt.loadNpmTasks('grunt-regex-replace');
 [getting_started]: https://github.com/gruntjs/grunt/blob/master/docs/getting_started.md
 
 ## How to use
+Here is an sample of the definition within the object passed to grunt.initConfig 
 ###Sample Code
 
       regex-replace: {
