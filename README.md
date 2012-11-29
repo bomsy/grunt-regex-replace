@@ -18,7 +18,7 @@ grunt.loadNpmTasks('grunt-regex-replace');
 ###Sample Code
 
       regex-replace: {
-        src: ['/foo/'],
+        src: ['foo/bar.js'],
         actions: [
           {
             search: '(^|\\s)console.log',
@@ -31,7 +31,21 @@ grunt.loadNpmTasks('grunt-regex-replace');
           }
         ]
       }
-
+### src property
+Takes the path to the files relative to the grunt file, it accepts strings as well as an array of file paths.
+Also templates can be use, e.g
+      
+      src: 'customisation/*.js';
+      src: ['foo/bar.js','foo/foo.js'];
+      src: ['<%= pkg.id %>/bar.js', 'foo/foo.js'];
+###actions property
+Accepts an array of objects defining the actions to take place. Each action contains a search property, a replace property and 
+a flags property. An example af an object.
+      {
+        search:'(^|\\s)console.log',
+        replace:'//console.log',
+        flags:'gi'
+      }
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
