@@ -35,9 +35,9 @@ grunt.loadNpmTasks('grunt-regex-replace');
 Takes the path to the files relative to the grunt file, it accepts strings as well as an array of file paths.
 Also templates can be use, e.g
       
-      src: 'customisation/*.js';
-      src: ['foo/bar.js','foo/foo.js'];
-      src: ['<%= pkg.id %>/bar.js', 'foo/foo.js'];
+      src: 'customisation/*.js',
+      src: ['foo/bar.js','foo/foo.js'],
+      src: ['<%= pkg.id %>/bar.js', 'foo/foo.js'],
 ###actions property
 Accepts an array of objects defining the actions to take place. Each action contains a search property, a replace property and 
 a flags property. An example af an object.
