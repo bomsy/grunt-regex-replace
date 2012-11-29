@@ -47,6 +47,13 @@ a flags property. An example af an object.
         replace:'//console.log',
         flags:'gi'
       }
+###search property
+A regular expression string defining the text to be found.
+###replace property
+A string/ regular expression pattern to replace the texts content
+###flags property
+Regular expressions options (ie gmi). if the flags property is not defined it defaults to 'g'. To specify no option set the
+flags to empty string (ie flags: '').
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
