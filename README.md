@@ -15,7 +15,8 @@ grunt.loadNpmTasks('grunt-regex-replace');
 [getting_started]: https://github.com/gruntjs/grunt/blob/master/docs/getting_started.md
 
 ## How to use
-Sample Code
+###Sample Code
+
       regex-replace: {
         src: ['/foo/'],
         actions: [
