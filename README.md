@@ -41,6 +41,7 @@ Also templates can be use, e.g
 ###actions property
 Accepts an array of objects defining the actions to take place. Each action contains a search property, a replace property and 
 a flags property. An example af an object.
+      
       {
         search:'(^|\\s)console.log',
         replace:'//console.log',
