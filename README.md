@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # grunt-regex-replace
 
 Grunt plugin to search and replace text content of files based on regular expression patterns
@@ -32,4 +32,3 @@ grunt-regex-replace
 ===================
 
 Grunt plugin to search and replace text content of files based on regular expression patterns
->>>>>>> 1915abdd0be218f0427a399844dde02af991a413
