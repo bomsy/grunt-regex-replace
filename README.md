@@ -53,8 +53,8 @@ A regular expression string defining the text contet to be found.
 ###replace property
 A string/ regular expression pattern to replace the text content.
 ###flags property
-Regular expressions options (ie gmi). if the flags property is not defined it defaults to 'g'. To specify no option set the
-flags to empty string (ie flags: '').
+Regular expressions options (ie gmi). if the flags property is not defined it defaults to 'g'. To specify no options, set the
+flags to empty string (ie flags : '').
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
