@@ -34,7 +34,7 @@ Here is an sample of the definition within the object passed to grunt.initConfig
       }
 ### src property
 Takes the path to the files relative to the grunt file, it accepts strings as well as an array of file paths.
-Also templates can be use, e.g
+Also supports templates, e.g
       
       src: 'customisation/*.js',
       src: ['foo/bar.js','foo/foo.js'],
