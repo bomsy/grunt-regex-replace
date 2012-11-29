@@ -27,7 +27,7 @@ grunt.loadNpmTasks('grunt-regex-replace');
           },{
             search: 'var v = \'[^\']*\';',
             replace: 'var v = \'<%= pkg.release.version_code %>\';',
-            flags: 'g'
+            flags: ''
           }
         ]
       }
