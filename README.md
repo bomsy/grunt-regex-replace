@@ -60,7 +60,9 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 v0.1.0 - First Release
+
 v0.1.1 - 
+
 v0.1.2 - Changes to readme
 
 ## License
