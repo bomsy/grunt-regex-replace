@@ -69,7 +69,3 @@ v0.1.2 - Changes to readme
 Copyright (c) 2012 Hubert Boma Manilla  
 Licensed under the MIT license.
 =======
-grunt-regex-replace
-===================
-
-Grunt plugin to search and replace text content of files based on regular expression patterns
