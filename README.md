@@ -18,7 +18,7 @@ grunt.loadNpmTasks('grunt-regex-replace');
 Here is an sample of the definition within the object passed to grunt.initConfig 
 ###Sample Code
 
-      regex-replace: {
+      "regex-replace": {
         src: ['foo/bar.js'],
         actions: [
           {
@@ -59,7 +59,9 @@ flags to empty string (ie flags : '').
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
-_(Nothing yet)_
+v0.1.0 - First Release
+v0.1.1 - 
+v0.1.2 - Changes to readme
 
 ## License
 Copyright (c) 2012 Hubert Boma Manilla  
