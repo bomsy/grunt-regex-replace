@@ -65,6 +65,8 @@ v0.1.1 -
 
 v0.1.2 - Changes to readme
 
+v0.2.1 - Updated to support grunt 0.4.x
+
 ## License
 Copyright (c) 2012 Hubert Boma Manilla  
 Licensed under the MIT license.
