@@ -4,17 +4,17 @@
  *
  * Copyright (c) 2012 Hubert Boma Manilla
  * Licensed under the MIT license.
+ *
  */
 
 module.exports = function(grunt) {
-  'use strict'
+  "use strict";
   // Please see the grunt documentation for more information regarding task and
   // helper creation: https://github.com/gruntjs/grunt/blob/master/docs/toc.md
 
   // ==========================================================================
   // TASKS
   // ==========================================================================
-  ;
   grunt.registerMultiTask('regex-replace', 'find & replace content of a file based regex patterns', function(){
     var files = grunt.file.expandFiles(this.file.src),
       actions = this.data.actions,
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
             if(typeof actions[j].search !== 'string' || typeof actions[j].replace !== 'string' || typeof options !== 'string' ){
               grunt.warn('An error occured while processing (Invalid type passed for \'search\' or \'replace\' of \'flags\', only strings accepted.)' );
             }
-            updatedContent = grunt.helper('regex-replace', updatedContent, grunt.template.process(actions[j].search), grunt.template.process(actions[j].replace), options, j);
+            updatedContent = regexReplace( updatedContent, grunt.template.process(actions[j].search), grunt.template.process(actions[j].replace), options, j);
           }
           grunt.file.write(files[i], updatedContent);
           if(this.errorCount){
@@ -48,7 +48,7 @@ module.exports = function(grunt) {
   // HELPERS
   // ==========================================================================
 
- grunt.registerHelper('regex-replace', function(src, regex, substr, options, index){
+ var regexReplace = function(src, regex, substr, options, index){
     //takes the sr content and changes the
     var regExp = new RegExp(regex , options),
       updatedSrc;
@@ -56,6 +56,6 @@ module.exports = function(grunt) {
     index = typeof index === 'undefined' ? '' : index;
     grunt.log.writeln(index + 1 + ' action(s) completed.');
     return updatedSrc;
-  });
+  };
 
 };
