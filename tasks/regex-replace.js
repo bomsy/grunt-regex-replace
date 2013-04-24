@@ -16,7 +16,7 @@ module.exports = function(grunt) {
   // TASKS
   // ==========================================================================
   grunt.registerMultiTask('regex-replace', 'find & replace content of a file based regex patterns', function(){
-    var files = grunt.file.expandFiles(this.file.src),
+    var files = grunt.file.expand(this.files[0].src),
       actions = this.data.actions,
       arrString = "[object Array]",
       toString = Object.prototype.toString,

@@ -19,18 +19,20 @@ Here is an sample of the definition within the object passed to grunt.initConfig
 ###Sample Code
 
       "regex-replace": {
-        src: ['foo/bar.js'],
-        actions: [
-          {
-            search: '(^|\\s)console.log',
-            replace: '//console.log',
-            flags: 'g'
-          },{
-            search: 'var v = \'[^\']*\';',
-            replace: 'var v = \'<%= pkg.release.version_code %>\';',
-            flags: ''
-          }
-        ]
+          foofoo: { //specify a target with any name
+		src: ['foo/bar.js'],
+		actions: [
+		  {
+		    search: '(^|\\s)console.log',
+		    replace: '//console.log',
+		    flags: 'g'
+		  },{
+		    search: 'var v = \'[^\']*\';',
+		    replace: 'var v = \'<%= pkg.release.version_code %>\';',
+		    flags: ''
+		  }
+		]
+	  }
       }
 ### src property
 Takes the path to the files relative to the grunt file, it accepts strings as well as an array of file paths.
@@ -68,6 +70,8 @@ v0.1.2 - Changes to readme
 v0.2.1 - Updated to support grunt 0.4.x
 
 v0.2.2 - version fixes
+
+v.0.2.3 - task format fixes for compatibilty with 0.4.0 ,
 
 ## License
 Copyright (c) 2012 Hubert Boma Manilla  
