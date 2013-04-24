@@ -17,23 +17,22 @@ grunt.loadNpmTasks('grunt-regex-replace');
 ## How to use
 Here is an sample of the definition within the object passed to grunt.initConfig 
 ###Sample Code
-
-      "regex-replace": {
-          foofoo: { //specify a target with any name
-		src: ['foo/bar.js'],
-		actions: [
-		  {
-		    search: '(^|\\s)console.log',
-		    replace: '//console.log',
-		    flags: 'g'
-		  },{
-		    search: 'var v = \'[^\']*\';',
-		    replace: 'var v = \'<%= pkg.release.version_code %>\';',
-		    flags: ''
-		  }
-		]
-	  }
-      }
+    "regex-replace": {
+        foofoo: { //specify a target with any name
+            src: ['foo/bar.js'],
+            actions: [
+                {
+                    search: '(^|\\s)console.log',
+                    replace: '//console.log',
+                    flags: 'g'
+                },{
+                    search: 'var v = \'[^\']*\';',
+                    replace: 'var v = \'<%= pkg.release.version_code %>\';',
+                    flags: ''
+                }
+            ]
+        }
+    }
 ### src property
 Takes the path to the files relative to the grunt file, it accepts strings as well as an array of file paths.
 Also supports templates, e.g
