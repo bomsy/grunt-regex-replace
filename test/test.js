@@ -25,6 +25,7 @@ exports['regex-replace'] = {
     // setup here
     done();
   },
+  //tests not specifying flags
   'noflags': function (test) {
     test.expect(1);
 
@@ -34,6 +35,7 @@ exports['regex-replace'] = {
 
     test.done();
   },
+  //test using empty flags
   'emptyflags': function (test) {
     test.expect(1);
 
@@ -43,6 +45,7 @@ exports['regex-replace'] = {
 
     test.done();
   },
+  //test caseinsensitivity
   'caseinsensitive': function (test) {
     test.expect(1);
 
@@ -52,11 +55,32 @@ exports['regex-replace'] = {
 
     test.done();
   },
+  //test the multiline flag
   'multiline': function (test) {
     test.expect(1);
 
     var expected = grunt.file.read('test/expected/multiline.txt');
     var  actual = grunt.file.read('test/actual/multiline.txt');
+    test.equal(actual, expected, 'not equal');
+
+    test.done();
+  },
+  //tests passing a regular expression object as a value to the search property
+  'regexpobjectsearch': function(test){
+    test.expect(1);
+
+    var expected = grunt.file.read('test/expected/regexpobjectsearch.txt');
+    var actual = grunt.file.read('test/actual/regexpobjectsearch.txt');
+    test.equal(actual, expected, 'not equal');
+
+    test.done();
+  },
+  //tests passing a function to the replace property
+  'replacefunction': function(test){
+    test.expect(1);
+
+    var expected = grunt.file.read('test/expected/replacefunction.txt');
+    var actual = grunt.file.read('test/actual/replacefunction.txt');
     test.equal(actual, expected, 'not equal');
 
     test.done();

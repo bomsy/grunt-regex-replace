@@ -19,22 +19,33 @@ module.exports = function(grunt) {
     var files = grunt.file.expand(this.files[0].src),
       actions = this.data.actions,
       arrString = "[object Array]",
+      regexString = "[object RegExp]",
       toString = Object.prototype.toString,
       GLOBAL = 'g',
       options = null,
+      srchAction = null,
+      rplAction = null,
       updatedContent;
       for(var i = 0; i< files.length; i++){
         if(toString.call(actions) === arrString){
           updatedContent = grunt.file.read(files[i]);
           for(var j = 0; j < actions.length; j++){
+            srchAction = actions[j].search,
+            rplAction = actions[j].replace; 
             options = actions[j].flags;
             if(typeof options === 'undefined'){
               options = GLOBAL;
             }
-            if(typeof actions[j].search !== 'string' || typeof actions[j].replace !== 'string' || typeof options !== 'string' ){
+            if( (typeof srchAction !== 'string' && toString.call(srchAction) !== regexString ) || (typeof rplAction !== 'string' && typeof rplAction !== 'function') || typeof options !== 'string' ){
               grunt.warn('An error occured while processing (Invalid type passed for \'search\' or \'replace\' of \'flags\', only strings accepted.)' );
             }
-            updatedContent = regexReplace( updatedContent, grunt.template.process(actions[j].search), grunt.template.process(actions[j].replace), options, j);
+            if(typeof srchAction === 'string'){
+              srchAction = grunt.template.process(srchAction);
+            }
+            if(typeof rplAction === 'string'){
+              rplAction = grunt.template.process(rplAction);
+            }
+            updatedContent = regexReplace( updatedContent, srchAction, rplAction , options, j, actions[j].name);
           }
           grunt.file.write(files[i], updatedContent);
           if(this.errorCount){
@@ -48,13 +59,22 @@ module.exports = function(grunt) {
   // HELPERS
   // ==========================================================================
 
- var regexReplace = function(src, regex, substr, options, index){
-    //takes the sr content and changes the
-    var regExp = new RegExp(regex , options),
-      updatedSrc;
-    updatedSrc = String(src).replace(regExp, substr);
+ var regexReplace = function(src, regex, substr, options, index, actionName){
+    //takes the src content and changes the content
+    var regExp = null,
+        updatedSrc;
+    if(typeof regex ===  'string'){ 
+      regExp = new RegExp(regex , options); //regex => string
+    } else {
+      regExp = regex; //regex => RegExp object
+    }
+    updatedSrc = String(src).replace(regExp, substr); //note: substr can be a function
     index = typeof index === 'undefined' ? '' : index;
-    grunt.log.writeln(index + 1 + ' action(s) completed.');
+    if(!actionName){
+      grunt.log.writeln(index + 1 + ' action(s) completed.');
+    } else {
+      grunt.log.writeln(actionName + ' action completed.');
+    }
     return updatedSrc;
   };
 

@@ -80,6 +80,33 @@ module.exports = function(grunt) {
             flags: 'gm'
           }
         ]
+      },
+      regexpobjectsearch: {
+        src: ['test/actual/regexpobjectsearch.txt'],
+        actions:[
+          {
+            name: 'RegExpObjectSearch',
+            search: new RegExp('\\[\\d{3}(\\w+)\\]'),
+            replace : '[$1]',
+          },
+          {
+            name: 'RegExpObjectSearchSlash',
+            search: /\[(\w+)\d{3}\]/,
+            replace: '[$1]'
+          }
+        ]
+      },
+      replacefunction:{
+        src: ['test/actual/replacefunction.txt'],
+        actions: [
+          {
+            name: 'ReplaceFunction',
+            search: '[a-z]+\\d+[a-z]+',
+            replace: function(){
+              return 'foofoofoo';
+            }
+          }
+        ]
       }
     },
     nodeunit: {
