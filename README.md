@@ -63,16 +63,16 @@ a flags property. An example af an object.
         flags:'gi'
       }
       
-### name property
+#### name property
 A string value 
 
-### search property (regexp | substr)
+#### search property (regexp | substr)
 A regular expression string or object defining the text content to be found.
 
-### replace property (substr | function)
+#### replace property (substr | function)
 A string / regular expression pattern or function to replace the text content.
 
-### flags property
+#### flags property
 Regular expressions options (ie gmi). if the flags property is not defined it defaults to 'g'. To specify no options, set the
 flags to empty string (ie flags : '').
 
