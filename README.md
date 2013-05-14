@@ -54,15 +54,22 @@ Also supports templates, e.g
       
 ### actions property ()
 Accepts an array of objects representing the actions to take place. Each action contains an optional name property, a search property, a replace property and 
-a flags property. An example af an object.
+a flags property. Example af an object.
       
       {
       	name: 'foo',
-        search:'(^|\\s)console.log',
-        replace:'//console.log',
-        flags:'gi'
+        search: '(^|\\s)console.log',
+        replace: '//console.log',
+        flags: 'gi'
       }
       
+      {
+        name: 'bar',
+        search: /\\w+/g, //also accepts new RegExp()
+        replace: function(){
+            return 'foo';
+        }
+      }
 #### name property
 A string value 
 
