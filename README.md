@@ -35,7 +35,7 @@ Here is an sample of the definition within the object passed to grunt.initConfig
                    name: 'foobar',
                    search: new RegExp('\\w+'),
                    replace: function(){
-                   	return 'foofoo';
+                   	    return 'foofoo';
                    }
                 }
             ]
