@@ -100,7 +100,9 @@ v0.2.2 - version fixes
 
 v.0.2.3 - task format fixes for compatibilty with 0.4.0 ,
 
-v.0.2.4 - added name property, search property now supports regexp object, replace property now supports functions.    
+v.0.2.4 - added name property, search property now supports regexp object, replace property now supports functions. 
+
+v.0.2.5 - fix /bin not exist error
 
 ## License
 Copyright (c) 2012 Hubert Boma Manilla  
