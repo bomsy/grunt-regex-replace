@@ -22,17 +22,27 @@ Here is an sample of the definition within the object passed to grunt.initConfig
             src: ['foo/bar.js'],
             actions: [
                 {
+		    name: 'foo',
                     search: '(^|\\s)console.log',
                     replace: '//console.log',
                     flags: 'g'
                 },{
+		    name: 'bar',
                     search: 'var v = \'[^\']*\';',
                     replace: 'var v = \'<%= pkg.release.version_code %>\';',
                     flags: ''
-                }
+                },
+		{
+		    name: 'foobar',
+		    search: new RegExp('|\\w+'),
+		    replace: function(){
+			return 'foofoo'
+		    },
+		}
             ]
         }
     }
+
 ### src property
 Takes the path to the files relative to the grunt file, it accepts strings as well as an array of file paths.
 Also supports templates, e.g
@@ -40,22 +50,29 @@ Also supports templates, e.g
       src: 'customisation/*.js',
       src: ['foo/bar.js','foo/foo.js'],
       src: ['<%= pkg.id %>/bar.js', 'foo/foo.js'],
-###actions property
+### actions property
 Accepts an array of objects defining the actions to take place. Each action contains a search property, a replace property and 
 a flags property. An example af an object.
       
       {
+	name: 'foo',
         search:'(^|\\s)console.log',
         replace:'//console.log',
         flags:'gi'
       }
-###search property
-A regular expression string defining the text contet to be found.
-###replace property
-A string/ regular expression pattern to replace the text content.
-###flags property
+### name property
+A string value 
+
+### search property (regexp | substr)
+A regular expression string or object defining the text content to be found.
+
+### replace property (newSubStr | function)
+A string / regular expression pattern or function to replace the text content.
+
+### flags property
 Regular expressions options (ie gmi). if the flags property is not defined it defaults to 'g'. To specify no options, set the
 flags to empty string (ie flags : '').
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
@@ -71,6 +88,8 @@ v0.2.1 - Updated to support grunt 0.4.x
 v0.2.2 - version fixes
 
 v.0.2.3 - task format fixes for compatibilty with 0.4.0 ,
+
+v.0.2.4 - added name property, search property now supports regexp object, replace property now supports functions.    
 
 ## License
 Copyright (c) 2012 Hubert Boma Manilla  
