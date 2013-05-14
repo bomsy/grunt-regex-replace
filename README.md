@@ -50,8 +50,8 @@ Also supports templates, e.g
       src: ['foo/bar.js','foo/foo.js'],
       src: ['<%= pkg.id %>/bar.js', 'foo/foo.js']
       
-### actions property
-Accepts an array of objects defining the actions to take place. Each action contains a search property, a replace property and 
+### actions property ()
+Accepts an array of objects representing the actions to take place. Each action contains an optional name property, a search property, a replace property and 
 a flags property. An example af an object.
       
       {
