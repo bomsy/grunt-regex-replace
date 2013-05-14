@@ -16,7 +16,9 @@ grunt.loadNpmTasks('grunt-regex-replace');
 
 ## How to use
 Here is an sample of the definition within the object passed to grunt.initConfig 
+
 ###Sample Code
+
     "regex-replace": {
         foofoo: { //specify a target with any name
             src: ['foo/bar.js'],
