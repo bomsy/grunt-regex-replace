@@ -22,23 +22,22 @@ Here is an sample of the definition within the object passed to grunt.initConfig
             src: ['foo/bar.js'],
             actions: [
                 {
-		    name: 'foo',
+                    name: 'bar',
                     search: '(^|\\s)console.log',
                     replace: '//console.log',
                     flags: 'g'
                 },{
-		    name: 'bar',
+                    name: 'bar',
                     search: 'var v = \'[^\']*\';',
                     replace: 'var v = \'<%= pkg.release.version_code %>\';',
                     flags: ''
-                },
-		{
-		    name: 'foobar',
-		    search: new RegExp('|\\w+'),
-		    replace: function(){
-			return 'foofoo'
-		    },
-		}
+                },{
+                   name: 'foobar',
+                   search: new RegExp('\\w+'),
+                   replace: function(){
+                   	return 'foofoo';
+                   }
+                }
             ]
         }
     }
@@ -49,17 +48,19 @@ Also supports templates, e.g
       
       src: 'customisation/*.js',
       src: ['foo/bar.js','foo/foo.js'],
-      src: ['<%= pkg.id %>/bar.js', 'foo/foo.js'],
+      src: ['<%= pkg.id %>/bar.js', 'foo/foo.js']
+      
 ### actions property
 Accepts an array of objects defining the actions to take place. Each action contains a search property, a replace property and 
 a flags property. An example af an object.
       
       {
-	name: 'foo',
+      	name: 'foo',
         search:'(^|\\s)console.log',
         replace:'//console.log',
         flags:'gi'
       }
+      
 ### name property
 A string value 
 
@@ -77,6 +78,7 @@ flags to empty string (ie flags : '').
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
+
 v0.1.0 - First Release
 
 v0.1.1 - 
