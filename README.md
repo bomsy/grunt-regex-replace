@@ -27,7 +27,7 @@ Here is an sample of the definition within the object passed to grunt.initConfig
                     replace: '//console.log',
                     flags: 'g'
                 },{
-                    name: 'bar',
+                    name: 'foo',
                     search: 'var v = \'[^\']*\';',
                     replace: 'var v = \'<%= pkg.release.version_code %>\';',
                     flags: ''
@@ -67,7 +67,7 @@ A string value
 ### search property (regexp | substr)
 A regular expression string or object defining the text content to be found.
 
-### replace property (newSubStr | function)
+### replace property (substr | function)
 A string / regular expression pattern or function to replace the text content.
 
 ### flags property
