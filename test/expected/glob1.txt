@@ -1,0 +1,1 @@
+Keep [foo] Expect [changed] glob1.txt

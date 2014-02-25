@@ -86,7 +86,7 @@ exports['regex-replace'] = {
     test.done();
   },
   //test using glob patterns for the target
-  'globpatterns': function(test){
+  'globpatterns': function(){
     test.expect(2);
 
     var expected1 = grunt.file.read('test/expected/glob1.txt');
@@ -101,7 +101,7 @@ exports['regex-replace'] = {
     test.done();
   },
   //test specifying a single src target using a string
-  'singlesrc': function(test){
+  'singlesrc': function(){
     test.expect(1);
 
     var expected = grunt.file.read('test/expected/singlesrc.txt');

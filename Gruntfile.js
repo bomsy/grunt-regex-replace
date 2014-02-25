@@ -96,7 +96,7 @@ module.exports = function(grunt) {
           }
         ]
       },
-      replacefunction:{
+      replacefunction: {
         src: ['test/actual/replacefunction.txt'],
         actions: [
           {
@@ -107,6 +107,26 @@ module.exports = function(grunt) {
             }
           }
         ]
+      },
+      globpatterns: {
+        src: 'test/actual/glob*.txt',
+	actions: [
+          {
+            name: 'SrcGlobPatternsTarget',
+            search: /bar(?:\d?)/,
+            replace: 'changed'
+          }	
+	]
+      },
+      singlesrc: {
+        src: 'test/actual/singlesrc.txt',
+	actions: [
+          {
+            name: 'SingleSourceTarget',
+            search: 'changeme',
+            replace: 'changed'
+          }	
+	]
       }
     },
     nodeunit: {

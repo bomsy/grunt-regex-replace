@@ -1,0 +1,1 @@
+Keep [foo2] Expect [bar2] glob2.txt

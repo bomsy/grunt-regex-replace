@@ -51,6 +51,7 @@ Takes the path to the files relative to the grunt file, it accepts strings as we
 Also supports templates, e.g
       
       src: 'customisation/*.js',
+      src: '**/*.js',
       src: ['foo/bar.js','foo/foo.js'],
       src: ['<%= pkg.id %>/bar.js', 'foo/foo.js']
       
@@ -105,6 +106,8 @@ v.0.2.3 - task format fixes for compatibilty with 0.4.0 ,
 v.0.2.4 - added name property, search property now supports regexp object, replace property now supports functions. 
 
 v.0.2.5 - fix /bin not exist error
+
+v.0.2.6 - Support for file globbing patterns.
 
 ## License
 Copyright (c) 2012 Hubert Boma Manilla  
