@@ -5,7 +5,11 @@
 Grunt plugin to search and replace text content of files based on regular expression patterns
 
 ## Getting Started
-Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-regex-replace`
+Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: 
+
+```
+npm install --save-dev grunt-regex-replace
+```
 
 Then add this line to your project's `grunt.js` gruntfile:
 
