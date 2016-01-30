@@ -1,1 +1,1 @@
-Expect [foobar] Keep [bla]
+Expect [foobar] Keep [bla] replacefunction2.txt

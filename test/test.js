@@ -120,5 +120,16 @@ exports['regex-replace'] = {
     test.equal(actual, expected, 'not equal');
 
     test.done(); 
+  },
+  //test passing a function to the actions property
+  'actionsfunction': function(test){
+    test.expect(1);
+
+    var expected = grunt.file.read('test/expected/actionsfunction.txt');
+    var actual = grunt.file.read('test/actual/actionsfunction.txt');
+
+    test.equal(actual, expected, 'not equal');
+
+    test.done(); 
   }
 };

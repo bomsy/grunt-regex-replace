@@ -59,8 +59,8 @@ Also supports templates, e.g
       src: ['foo/bar.js','foo/foo.js'],
       src: ['<%= pkg.id %>/bar.js', 'foo/foo.js']
       
-### actions property ()
-Accepts an array of objects representing the actions to take place. Each action contains an optional name property, a search property, a replace property and 
+### actions property (array | function)
+Accepts an array of objects or a function (which returns an array of objects) representing the actions to take place. Each action contains an optional name property, a search property, a replace property and 
 a flags property. Example af an object.
       
       {
@@ -88,8 +88,10 @@ A string / regular expression pattern or function to replace the text content.
 For the replace function, values that match the parenthesized substring matches are passed as arguments
       {
         search: new RegExp(/(\w+)\s(\w+)/),
-        replace: function(a, b, c) {
-      
+        replace: function(arg1, arg2, ... argN) {
+          // arg1 is the full string matched
+          // arg2 is the first parenthesized substring match
+          // argN is the Nth parenthesized substring match
         }
       }
 See [MDN Documentation](https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_parenthesized_substring_matches) for details on "using parenthesized substring matches."

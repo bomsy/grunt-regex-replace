@@ -113,32 +113,42 @@ module.exports = function(grunt) {
         actions: [
           {
             name: 'ReplaceFunctionArguments',
-            search: new RegExp(/[(\w+)]/),
+            search: new RegExp(/\[(\w+)\]/),
             replace: function(r1, r2) {
-              return 'foo' + r2;
+              return '[foo' + r2 + ']';
             }
           }
         ]
       },
       globpatterns: {
         src: 'test/actual/glob*.txt',
-	      actions: [
+        actions: [
           {
             name: 'SrcGlobPatternsTarget',
             search: /bar(?:\d?)/,
             replace: 'changed'
           }	
-	      ]
+        ]
       },
       singlesrc: {
         src: 'test/actual/singlesrc.txt',
-	      actions: [
+        actions: [
           {
             name: 'SingleSourceTarget',
             search: 'changeme',
             replace: 'changed'
           }	
-	      ]
+        ]
+      },
+      actionsfunction: {
+        src: 'test/actual/actionsfunction.txt',
+        actions: function() {
+          return [{
+            name: 'ActionsFunction',
+            search: 'foo',
+            replace: 'bar'
+          }];
+        }
       }
     },
     nodeunit: {
