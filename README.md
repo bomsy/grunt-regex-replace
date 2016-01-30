@@ -54,29 +54,29 @@ Here is an sample of the definition within the object passed to grunt.initConfig
 Takes the path to the files relative to the grunt file, it accepts strings as well as an array of file paths.
 Also supports templates, e.g
       
-      src: 'customisation/*.js',
-      src: '**/*.js',
-      src: ['foo/bar.js','foo/foo.js'],
-      src: ['<%= pkg.id %>/bar.js', 'foo/foo.js']
+    src: 'customisation/*.js',
+    src: '**/*.js',
+    src: ['foo/bar.js','foo/foo.js'],
+    src: ['<%= pkg.id %>/bar.js', 'foo/foo.js']
       
 ### actions property (array | function)
 Accepts an array of objects or a function (which returns an array of objects) representing the actions to take place. Each action contains an optional name property, a search property, a replace property and 
 a flags property. Example af an object.
       
-      {
-      	name: 'foo',
+    {
+        name: 'foo',
         search: '(^|\\s)console.log',
         replace: '//console.log',
         flags: 'gi'
-      }
+    }
       
-      {
+    {
         name: 'bar',
         search: /\\w+/g, //also accepts new RegExp()
         replace: function() {
             return 'foo';
         }
-      }
+    }
 #### name property
 A string value 
 
@@ -86,14 +86,16 @@ A regular expression string or object defining the text content to be found.
 #### replace property (substr | function)
 A string / regular expression pattern or function to replace the text content.
 For the replace function, values that match the parenthesized substring matches are passed as arguments
-      {
+```
+    {
         search: new RegExp(/(\w+)\s(\w+)/),
         replace: function(arg1, arg2, ... argN) {
           // arg1 is the full string matched
           // arg2 is the first parenthesized substring match
           // argN is the Nth parenthesized substring match
         }
-      }
+    }
+```
 See [MDN Documentation](https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_parenthesized_substring_matches) for details on "using parenthesized substring matches."
 
 #### flags property
