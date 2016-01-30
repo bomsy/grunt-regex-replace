@@ -85,6 +85,16 @@ exports['regex-replace'] = {
 
     test.done();
   },
+  //tests the arguments passed to the function passed to the replace property
+  'replacefunction2': function(test) {
+    test.expect(1);
+
+    var expected = grunt.file.read('test/expected/replacefunction2.txt');
+    var actual = grunt.file.read('test/actual/replacefunction2.txt');
+    test.equal(actual, expected, 'not equal');
+
+    test.done();
+  },
   //test using glob patterns for the target
   'globpatterns': function(test){
     test.expect(2);

@@ -42,7 +42,7 @@ Here is an sample of the definition within the object passed to grunt.initConfig
                 },{
                    name: 'foobar',
                    search: new RegExp('\\w+'),
-                   replace: function(){
+                   replace: function() {
                    	    return 'foofoo';
                    }
                 }
@@ -73,7 +73,7 @@ a flags property. Example af an object.
       {
         name: 'bar',
         search: /\\w+/g, //also accepts new RegExp()
-        replace: function(){
+        replace: function() {
             return 'foo';
         }
       }
@@ -85,6 +85,14 @@ A regular expression string or object defining the text content to be found.
 
 #### replace property (substr | function)
 A string / regular expression pattern or function to replace the text content.
+For the replace function, values that match the parenthesized substring matches are passed as arguments
+      {
+        search: new RegExp(/(\w+)\s(\w+)/),
+        replace: function(a, b, c) {
+      
+        }
+      }
+See [MDN Documentation](https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_parenthesized_substring_matches) for details on "using parenthesized substring matches."
 
 #### flags property
 Regular expressions options (ie gmi). if the flags property is not defined it defaults to 'g'. To specify no options, set the
