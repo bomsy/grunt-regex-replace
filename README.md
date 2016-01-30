@@ -125,6 +125,8 @@ v.0.2.5 - fix /bin not exist error
 
 v.0.2.6 - Support for file globbing patterns.
 
+v.0.2.7 - Support for passing a function to the action property, Updated documentation for using parenthesized substring matches
+
 ## License
 Copyright (c) 2012 Hubert Boma Manilla  
 Licensed under the MIT license.
