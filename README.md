@@ -99,8 +99,8 @@ For the replace function, values that match the parenthesized substring matches 
 See [MDN Documentation](https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_parenthesized_substring_matches) for details on "using parenthesized substring matches."
 
 #### flags property
-Regular expressions options (ie gmi). if the flags property is not defined it defaults to 'g'. To specify no options, set the
-flags to empty string (ie flags : '').
+Regular expressions options (ie `gmi`). If the flags property is not defined, and the search property is a string, it defaults to `'g'`. To specify no options, set the flags to empty string (ie flags : '').
+Note: Do not use the `flags` property if a `regexp` was used for the search property. Instead, use the flag(s) in your regex. ie: `/^[a-z0-9_-]{6,18}$/g`
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
