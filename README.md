@@ -127,6 +127,8 @@ v.0.2.6 - Support for file globbing patterns.
 
 v.0.2.7 - Support for passing a function to the action property, Updated documentation for using parenthesized substring matches
 
+v.0.2.9 - Clarification for regex flags usage
+
 ## License
 Copyright (c) 2012 Hubert Boma Manilla  
 Licensed under the MIT license.
