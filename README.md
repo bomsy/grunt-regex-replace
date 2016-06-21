@@ -61,7 +61,7 @@ Also supports templates, e.g
       
 ### actions property (array | function)
 Accepts an array of objects or a function (which returns an array of objects) representing the actions to take place. Each action contains an optional name property, a search property, a replace property and 
-a flags property. Example af an object.
+a flags property. Here are some examples of the object.
       
     {
         name: 'foo',
