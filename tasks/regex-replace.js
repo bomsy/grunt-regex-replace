@@ -31,7 +31,7 @@ module.exports = function(grunt) {
         updatedContent = grunt.file.read(src);
         for(var j = 0; j < actions.length; j++){
           srchAction = actions[j].search,
-          rplAction = actions[j].replace; 
+          rplAction = actions[j].replace;
           options = actions[j].flags;
           if(typeof options === 'undefined'){
             options = GLOBAL;
@@ -48,7 +48,7 @@ module.exports = function(grunt) {
           updatedContent = regexReplace( updatedContent, srchAction, rplAction , options, j, actions[j].name);
         }
         grunt.file.write(src, updatedContent);
-        grunt.log.writeln('File \'' + src + '\' replace complete.');
+        grunt.log.verbose.ok('File \'' + src + '\' replace complete.');
       });
     });
 
@@ -64,7 +64,7 @@ module.exports = function(grunt) {
     //takes the src content and changes the content
     var regExp = null,
         updatedSrc;
-    if(typeof regex ===  'string'){ 
+    if(typeof regex ===  'string'){
       regExp = new RegExp(regex , options); //regex => string
     } else {
       regExp = regex; //regex => RegExp object
@@ -72,9 +72,9 @@ module.exports = function(grunt) {
     updatedSrc = String(src).replace(regExp, substr); //note: substr can be a function
     index = typeof index === 'undefined' ? '' : index;
     if(!actionName){
-      grunt.log.writeln(index + 1 + ' action(s) completed.');
+      grunt.log.verbose.ok(index + 1 + ' action(s) completed.');
     } else {
-      grunt.log.writeln(actionName + ' action completed.');
+      grunt.log.verbose.ok(actionName + ' action completed.');
     }
     return updatedSrc;
   };
