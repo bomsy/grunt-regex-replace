@@ -102,6 +102,9 @@ See [MDN Documentation](https://developer.mozilla.org/en/docs/Web/JavaScript/Gui
 Regular expressions options (ie `gmi`). If the flags property is not defined, and the search property is a string, it defaults to `'g'`. To specify no options, set the flags to empty string (ie flags : '').
 Note: Do not use the `flags` property if a `regexp` was used for the search property. Instead, use the flag(s) in your regex. ie: `/^[a-z0-9_-]{6,18}$/g`
 
+#### debug log
+Add `--verbose` to show detailed logs
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
