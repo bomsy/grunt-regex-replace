@@ -103,7 +103,7 @@ Regular expressions options (ie `gmi`). If the flags property is not defined, an
 Note: Do not use the `flags` property if a `regexp` was used for the search property. Instead, use the flag(s) in your regex. ie: `/^[a-z0-9_-]{6,18}$/g`
 
 #### debug log
-Add `--verbose` to show detailed logs
+specify `--verbose` as a command-line option to show detailed logs
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
