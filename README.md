@@ -132,6 +132,8 @@ v.0.2.7 - Support for passing a function to the action property, Updated documen
 
 v.0.2.9 - Clarification for regex flags usage
 
+v.0.2.10 - add verbose logging
+
 ## License
 Copyright (c) 2012 Hubert Boma Manilla  
 Licensed under the MIT license.
