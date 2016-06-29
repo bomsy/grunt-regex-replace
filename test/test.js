@@ -20,6 +20,16 @@ var grunt = require('grunt');
     test.ifError(value)
 */
 
+function checkFile(data) {
+  var file = data.file,
+      message = data.message || 'not equal',
+      test = data.test;
+
+  test.expect(1);
+  test.equal(grunt.file.read('test/actual/' + file), grunt.file.read('test/expected/' + file), message);
+  test.done();
+}
+
 exports['regex-replace'] = {
   setUp: function (done) {
     // setup here
@@ -27,73 +37,31 @@ exports['regex-replace'] = {
   },
   //tests not specifying flags
   'noflags': function (test) {
-    test.expect(1);
-
-    var expected = grunt.file.read('test/expected/noflags.txt');
-    var actual = grunt.file.read('test/actual/noflags.txt');
-    test.equal(actual, expected, 'not equal');
-
-    test.done();
+    checkFile({test: test, file: 'noflags.txt'});
   },
   //test using empty flags
   'emptyflags': function (test) {
-    test.expect(1);
-
-    var expected = grunt.file.read('test/expected/emptyflags.txt');
-    var actual = grunt.file.read('test/actual/emptyflags.txt');
-    test.equal(actual, expected, 'not equal');
-
-    test.done();
+    checkFile({test: test, file: 'emptyflags.txt'});
   },
   //test caseinsensitivity
   'caseinsensitive': function (test) {
-    test.expect(1);
-
-    var expected = grunt.file.read('test/expected/caseinsensitive.txt');
-    var  actual = grunt.file.read('test/actual/caseinsensitive.txt');
-    test.equal(actual, expected, 'not equal');
-
-    test.done();
+    checkFile({test: test, file: 'caseinsensitive.txt'});
   },
   //test the multiline flag
   'multiline': function (test) {
-    test.expect(1);
-
-    var expected = grunt.file.read('test/expected/multiline.txt');
-    var  actual = grunt.file.read('test/actual/multiline.txt');
-    test.equal(actual, expected, 'not equal');
-
-    test.done();
+    checkFile({test: test, file: 'multiline.txt'});
   },
   //tests passing a regular expression object as a value to the search property
   'regexpobjectsearch': function(test){
-    test.expect(1);
-
-    var expected = grunt.file.read('test/expected/regexpobjectsearch.txt');
-    var actual = grunt.file.read('test/actual/regexpobjectsearch.txt');
-    test.equal(actual, expected, 'not equal');
-
-    test.done();
+    checkFile({test: test, file: 'regexpobjectsearch.txt'});
   },
   //tests passing a function to the replace property
   'replacefunction': function(test){
-    test.expect(1);
-
-    var expected = grunt.file.read('test/expected/replacefunction.txt');
-    var actual = grunt.file.read('test/actual/replacefunction.txt');
-    test.equal(actual, expected, 'not equal');
-
-    test.done();
+    checkFile({test: test, file: 'replacefunction.txt'});
   },
   //tests the arguments passed to the function passed to the replace property
   'replacefunction2': function(test) {
-    test.expect(1);
-
-    var expected = grunt.file.read('test/expected/replacefunction2.txt');
-    var actual = grunt.file.read('test/actual/replacefunction2.txt');
-    test.equal(actual, expected, 'not equal');
-
-    test.done();
+    checkFile({test: test, file: 'replacefunction2.txt'});
   },
   //test using glob patterns for the target
   'globpatterns': function(test){
@@ -112,24 +80,22 @@ exports['regex-replace'] = {
   },
   //test specifying a single src target using a string
   'singlesrc': function(test){
-    test.expect(1);
-
-    var expected = grunt.file.read('test/expected/singlesrc.txt');
-    var actual = grunt.file.read('test/actual/singlesrc.txt');
-
-    test.equal(actual, expected, 'not equal');
-
-    test.done(); 
+    checkFile({test: test, file: 'singlesrc.txt'});
   },
   //test passing a function to the actions property
   'actionsfunction': function(test){
-    test.expect(1);
-
-    var expected = grunt.file.read('test/expected/actionsfunction.txt');
-    var actual = grunt.file.read('test/actual/actionsfunction.txt');
-
-    test.equal(actual, expected, 'not equal');
-
-    test.done(); 
+    checkFile({test: test, file: 'actionsfunction.txt'});
+  },
+  //test specifying 'use: false' option
+  'usefalse': function(test){
+    checkFile({test: test, file: 'usefalse.txt'});
+  },
+  //test specifying 'use: function' option
+  'usefunc': function(test){
+    checkFile({test: test, file: 'usefunc.txt'});
+  },
+  //test specifying 'use: function' option
+  'usestring': function(test){
+    checkFile({test: test, file: 'usestring.txt'});
   }
 };
