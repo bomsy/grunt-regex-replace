@@ -5,7 +5,7 @@
 Grunt plugin to search and replace text content of files based on regular expression patterns
 
 ## Getting Started
-Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: 
+Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with:
 
 ```
 npm install --save-dev grunt-regex-replace
@@ -21,7 +21,7 @@ grunt.loadNpmTasks('grunt-regex-replace');
 [getting_started]: https://github.com/gruntjs/grunt/blob/master/docs/getting_started.md
 
 ## How to use
-Here is an sample of the definition within the object passed to grunt.initConfig 
+Here is a sample of the definition within the object passed to grunt.initConfig
 
 ###Sample Code
 
@@ -45,6 +45,13 @@ Here is an sample of the definition within the object passed to grunt.initConfig
                    replace: function() {
                    	    return 'foofoo';
                    }
+                },{
+                   name: 'baz',
+                   use: function(data) {
+                     return data.sourceContent.length > 3;
+                   },
+                   search: 'abc',
+                   replace: 'abcde'
                 }
             ]
         }
@@ -53,23 +60,26 @@ Here is an sample of the definition within the object passed to grunt.initConfig
 ### src property
 Takes the path to the files relative to the grunt file, it accepts strings as well as an array of file paths.
 Also supports templates, e.g
-      
+
     src: 'customisation/*.js',
     src: '**/*.js',
     src: ['foo/bar.js','foo/foo.js'],
     src: ['<%= pkg.id %>/bar.js', 'foo/foo.js']
-      
+
 ### actions property (array | function)
-Accepts an array of objects or a function (which returns an array of objects) representing the actions to take place. Each action contains an optional name property, a search property, a replace property and 
-a flags property. Here are some examples of the object.
-      
+Accepts an array of objects or a function (which returns an array of objects) representing the actions to take place. Each action contains an optional `name` property, an optional `use` property, a `search` property, a `replace` property and
+an optional `flags` property. Here are some examples of the object.
+
     {
         name: 'foo',
+        use: function(data) {
+          return data.file.indexOf('.skip') === -1 && data.sourceContent.indexOf('console.log') > -1;
+        }, //also accepts a template string or any value
         search: '(^|\\s)console.log',
         replace: '//console.log',
         flags: 'gi'
     }
-      
+
     {
         name: 'bar',
         search: /\\w+/g, //also accepts new RegExp()
@@ -78,7 +88,23 @@ a flags property. Here are some examples of the object.
         }
     }
 #### name property
-A string value 
+A string value.
+
+#### use property (function | template string | value)
+*Default value*: `true`
+
+A test that is used to determine whether the corresponding action should be applied.
+Can be a function which returns a value that will be used for test, a template string producing a value for test
+or directly a test value. When the final test value is true, the related action will be used.
+
+An object with the following fields is passed in test function:
+
+* `file` - path to a file that is being processed;
+* `sourceContent` - source contents of the processed file;
+* `updatedContent` - contents of the file after previously applied actions;
+* `action` - object that is representing options of the current action;
+* `task` - reference to the corresponding task;
+* `grunt` - reference to grunt.
 
 #### search property (regexp | substr)
 A regular expression string or object defining the text content to be found.
@@ -112,7 +138,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 v0.1.0 - First Release
 
-v0.1.1 - 
+v0.1.1 -
 
 v0.1.2 - Changes to readme
 
@@ -122,7 +148,7 @@ v0.2.2 - version fixes
 
 v.0.2.3 - task format fixes for compatibilty with 0.4.0 ,
 
-v.0.2.4 - added name property, search property now supports regexp object, replace property now supports functions. 
+v.0.2.4 - added name property, search property now supports regexp object, replace property now supports functions.
 
 v.0.2.5 - fix /bin not exist error
 

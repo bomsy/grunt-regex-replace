@@ -1,7 +1,17 @@
 module.exports = function(grunt) {
   'use strict';
+
+  function testActionUse(data) {
+    return data.action.search === 'replaced';
+  }
+
   // Project configuration.
   grunt.initConfig({
+    testData: {
+      useAction: true,
+      skipAction: false
+    },
+
     watch: {
       files: '<%= jshint.all %>',
       tasks: 'default'
@@ -127,7 +137,7 @@ module.exports = function(grunt) {
             name: 'SrcGlobPatternsTarget',
             search: /bar(?:\d?)/,
             replace: 'changed'
-          }	
+          }
         ]
       },
       singlesrc: {
@@ -137,7 +147,7 @@ module.exports = function(grunt) {
             name: 'SingleSourceTarget',
             search: 'changeme',
             replace: 'changed'
-          }	
+          }
         ]
       },
       actionsfunction: {
@@ -149,6 +159,76 @@ module.exports = function(grunt) {
             replace: 'bar'
           }];
         }
+      },
+      usefalse: {
+        src: 'test/actual/usefalse.txt',
+        actions: [
+          {
+            name: 'UseFalseSkippedAction',
+            use: false,
+            search: 'nochange',
+            replace: 'changed'
+          },
+          {
+            name: 'UseFalseUsedAction',
+            search: 'changeme',
+            replace: 'changed'
+          },
+          {
+            name: 'UseFalseSkippedAction2',
+            use: '',
+            search: 'usefalse.txt',
+            replace: 'changed-file.txt'
+          }
+        ]
+      },
+      usefunc: {
+        src: 'test/actual/usefunc.txt',
+        actions: [
+          {
+            name: 'UseFuncUsedAction',
+            use: testActionUse,
+            search: 'replaced',
+            replace: 'changed'
+          },
+          {
+            name: 'UseFuncSkippedAction',
+            use: testActionUse,
+            search: 'skipped',
+            replace: 'changed'
+          },
+          {
+            name: 'UseFuncUsedAction2',
+            use: function(data) {
+              return data.file.indexOf('use') > -1 && data.sourceContent.indexOf('text') > -1;
+            },
+            search: 'Some text',
+            replace: 'Changed text'
+          }
+        ]
+      },
+      usestring: {
+        src: 'test/actual/usestring.txt',
+        actions: [
+          {
+            name: 'UseStringSkippedAction',
+            use: '<%= testData.skipAction %>',
+            search: 'skipped',
+            replace: 'changed'
+          },
+          {
+            name: 'UseStringUsedAction',
+            use: '<%= testData.useAction %>',
+            search: 'replaced',
+            replace: 'changed'
+          },
+          {
+            name: 'UseStringUsedAction2',
+            use: 'use',
+            search: 'Some text',
+            replace: 'Replacement'
+          }
+        ]
       }
     },
     nodeunit: {
