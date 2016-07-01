@@ -93,9 +93,9 @@ A string value.
 #### use property (function | template string | value)
 *Default*: `true`
 
-Used to determine whether the corresponding action should be executed or used. If set to `true` the action executes,
+Used to determine whether the corresponding action should be executed or not. If set to `true` the action executes,
 if `false` it does not. Can also be a function which returns a value, a template string producing a value.
-It enables adding conditions to when actions are used.
+It enables specifying the conditions for when actions are used.
 
 An object with the following fields is passed in test function:
 
