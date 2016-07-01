@@ -14,6 +14,7 @@
   "bugs": {
     "url": "https://github.com/bomsy/grunt-regex-replace/issues"
   },
+  "licence": "MIT",
   "licenses": [
     {
       "type": "MIT",
@@ -29,15 +30,12 @@
     "test": "grunt test"
   },
   "devDependencies": {
-    "grunt": "^0.4.0",
-    "grunt-contrib-clean": "^0.4.1",
-    "grunt-contrib-copy": "^0.4.1",
-    "grunt-contrib-jshint": "^0.4.3",
-    "grunt-contrib-nodeunit": "~0.4.1",
-    "grunt-contrib-watch": "^0.3.1"
-  },
-  "peerDependencies": {
-    "grunt": ">=0.4.0"
+    "grunt": "^1.0.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-nodeunit": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0"
   },
   "keywords": [
     "gruntplugin",
