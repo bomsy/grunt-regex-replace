@@ -136,29 +136,18 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
-v0.1.0 - First Release
-
-v0.1.1 -
-
-v0.1.2 - Changes to readme
-
-v0.2.1 - Updated to support grunt 0.4.x
-
-v0.2.2 - version fixes
-
-v.0.2.3 - task format fixes for compatibilty with 0.4.0 ,
-
-v.0.2.4 - added name property, search property now supports regexp object, replace property now supports functions.
-
-v.0.2.5 - fix /bin not exist error
-
-v.0.2.6 - Support for file globbing patterns.
-
-v.0.2.7 - Support for passing a function to the action property, Updated documentation for using parenthesized substring matches
-
-v.0.2.9 - Clarification for regex flags usage
-
-v.0.2.10 - add verbose logging
+* `v0.2.10` - add verbose logging
+* `v0.2.9` - Clarification for regex flags usage
+* `v0.2.7` - Support for passing a function to the action property, Updated documentation for using parenthesized substring matches
+* `v0.2.6` - Support for file globbing patterns.
+* `v0.2.5` - fix /bin not exist error
+* `v0.2.4` - added name property, search property now supports regexp object, replace property now supports functions.
+* `v0.2.3` - task format fixes for compatibilty with 0.4.0.
+* `v0.2.2` - version fixes
+* `v0.2.1` - Updated to support grunt 0.4.x
+* `v0.1.2` - Changes to readme
+* `v0.1.1` -
+* `v0.1.0` - First Release
 
 ## License
 Copyright (c) 2012 Hubert Boma Manilla  
