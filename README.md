@@ -135,7 +135,7 @@ specify `--verbose` as a command-line option to show detailed logs
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
-
+* `v0.3.0` - added new `use` property to `actions`, removed peerDependencies restrictions
 * `v0.2.10` - add verbose logging
 * `v0.2.9` - Clarification for regex flags usage
 * `v0.2.7` - Support for passing a function to the action property, Updated documentation for using parenthesized substring matches
