@@ -91,11 +91,11 @@ an optional `flags` property. Here are some examples of the object.
 A string value.
 
 #### use property (function | template string | value)
-*Default value*: `true`
+*Default*: `true`
 
-A test that is used to determine whether the corresponding action should be applied.
-Can be a function which returns a value that will be used for test, a template string producing a value for test
-or directly a test value. When the final test value is true, the related action will be used.
+Used to determine whether the corresponding action should be executed or used. If set to `true` the action executes,
+if `false` it does not. Can also be a function which returns a value, a template string producing a value.
+It enables adding conditions to when actions are used.
 
 An object with the following fields is passed in test function:
 
