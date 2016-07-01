@@ -12,6 +12,30 @@ module.exports = function(grunt) {
   // Please see the grunt documentation for more information regarding task and
   // helper creation: https://github.com/gruntjs/grunt/blob/master/docs/toc.md
 
+
+  // ==========================================================================
+  // HELPERS
+  // ==========================================================================
+
+ var regexReplace = function(src, regex, substr, options, index, actionName){
+    //takes the src content and changes the content
+    var regExp = null,
+        updatedSrc;
+    if(typeof regex ===  'string'){
+      regExp = new RegExp(regex , options); //regex => string
+    } else {
+      regExp = regex; //regex => RegExp object
+    }
+    updatedSrc = String(src).replace(regExp, substr); //note: substr can be a function
+    index = typeof index === 'undefined' ? '' : index;
+    if(!actionName){
+      grunt.log.verbose.ok(index + 1 + ' action(s) completed.');
+    } else {
+      grunt.log.verbose.ok(actionName + ' action completed.');
+    }
+    return updatedSrc;
+  };
+
   // ==========================================================================
   // TASKS
   // ==========================================================================
@@ -83,27 +107,4 @@ module.exports = function(grunt) {
         return false;
     }
   });
-  // ==========================================================================
-  // HELPERS
-  // ==========================================================================
-
- var regexReplace = function(src, regex, substr, options, index, actionName){
-    //takes the src content and changes the content
-    var regExp = null,
-        updatedSrc;
-    if(typeof regex ===  'string'){
-      regExp = new RegExp(regex , options); //regex => string
-    } else {
-      regExp = regex; //regex => RegExp object
-    }
-    updatedSrc = String(src).replace(regExp, substr); //note: substr can be a function
-    index = typeof index === 'undefined' ? '' : index;
-    if(!actionName){
-      grunt.log.verbose.ok(index + 1 + ' action(s) completed.');
-    } else {
-      grunt.log.verbose.ok(actionName + ' action completed.');
-    }
-    return updatedSrc;
-  };
-
 };
