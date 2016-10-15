@@ -229,6 +229,36 @@ module.exports = function(grunt) {
             replace: 'Replacement'
           }
         ]
+      },
+      dest: {
+        src: ['test/actual/unchangesrc.txt'],
+        dest: 'test/actual/changedest.txt',
+        actions: [
+          {
+            search: 'foo',
+            replace: 'bar'
+          }
+        ]
+      },
+      onedest: {
+        src: ['test/actual/unchangesrc.txt', 'test/actual/changesrc.txt'],
+        dest: ['test/actual/changedest.txt'],
+        actions: [
+          {
+            search: 'foo',
+            replace: 'bar'
+          }
+        ]
+      },
+      ignoredest: {
+        src: ['test/actual/unchangesrc.txt'],
+        dest: ['test/actual/changedest.txt', 'test/actual/ignoredest.txt'],
+        actions: [
+          {
+            search: 'foo',
+            replace: 'bar'
+          }
+        ]
       }
     },
     nodeunit: {

@@ -17,18 +17,18 @@ module.exports = function(grunt) {
   // HELPERS
   // ==========================================================================
 
- var regexReplace = function(src, regex, substr, options, index, actionName){
+ var regexReplace = function(src, regex, substr, options, index, actionName) {
     //takes the src content and changes the content
     var regExp = null,
         updatedSrc;
-    if(typeof regex ===  'string'){
+    if (typeof regex ===  'string') {
       regExp = new RegExp(regex , options); //regex => string
     } else {
       regExp = regex; //regex => RegExp object
     }
     updatedSrc = String(src).replace(regExp, substr); //note: substr can be a function
     index = typeof index === 'undefined' ? '' : index;
-    if(!actionName){
+    if (!actionName) {
       grunt.log.verbose.ok(index + 1 + ' action(s) completed.');
     } else {
       grunt.log.verbose.ok(actionName + ' action completed.');
@@ -39,9 +39,8 @@ module.exports = function(grunt) {
   // ==========================================================================
   // TASKS
   // ==========================================================================
-  grunt.registerMultiTask('regex-replace', 'find & replace content of a file based regex patterns', function(){
+  grunt.registerMultiTask('regex-replace', 'find & replace content of a file based regex patterns', function() {
     var actions = typeof this.data.actions !== 'function' ? this.data.actions : this.data.actions(),
-      arrString = "[object Array]",
       regexString = "[object RegExp]",
       template = grunt.template,
       toString = Object.prototype.toString,
@@ -57,53 +56,61 @@ module.exports = function(grunt) {
       use;
 
     this.files.forEach(function(file) {
-      file.src.forEach(function(src) {
+      var dest = Array.isArray(file.dest) ? file.dest : [file.dest];
+      file.src.forEach(function(src, index) {
         sourceContent = grunt.file.read(src);
         updatedContent = sourceContent;
-        for(var j = 0; j < actions.length; j++){
+        for (var j = 0; j < actions.length; j++) {
           action = actions[j];
-          if('use' in action){
+          if ('use' in action) {
             use = action.use;
-            if(use){
+            if (use) {
               type = typeof use;
-              if(type === 'function'){
-                use = use({file: src, sourceContent: sourceContent, updatedContent: updatedContent, action: action, task: this, grunt: grunt});
-              } else if(type === 'string') {
+              if (type === 'function') {
+                use = use({
+                  file: src,
+                  sourceContent: sourceContent,
+                  updatedContent: updatedContent,
+                  action: action,
+                  task: this,
+                  grunt: grunt
+                });
+              } else if (type === 'string') {
                 use = template.process(use);
               }
             }
           } else {
             use = true;
           }
-          if(use){
+          if (use) {
             srchAction = action.search,
             rplAction = action.replace;
             options = action.flags;
-            if(typeof options === 'undefined'){
+            if (typeof options === 'undefined') {
               options = GLOBAL;
             }
             type = typeof srchAction;
             replaceType = typeof rplAction;
-            if( (type !== 'string' && toString.call(srchAction) !== regexString ) || (replaceType !== 'string' && typeof rplAction !== 'function') || typeof options !== 'string' ){
+            if ( (type !== 'string' && toString.call(srchAction) !== regexString ) || (replaceType !== 'string' && typeof rplAction !== 'function') || typeof options !== 'string' ) {
               grunt.warn('An error occured while processing (Invalid type passed for \'search\' or \'replace\' of \'flags\', only strings accepted.)' );
             }
-            if(type === 'string'){
+            if (type === 'string') {
               srchAction = template.process(srchAction);
             }
-            if(replaceType === 'string'){
+            if (replaceType === 'string') {
               rplAction = template.process(rplAction);
             }
             updatedContent = regexReplace( updatedContent, srchAction, rplAction , options, j, action.name);
           }
         }
-        if(updatedContent !== sourceContent){
-          grunt.file.write(src, updatedContent);
+        if (updatedContent !== sourceContent) {
+          grunt.file.write(dest[index] ? dest[index] : src, updatedContent);
         }
         grunt.log.verbose.ok('File \'' + src + '\' replace complete.');
       });
     });
 
-    if(this.errorCount){
+    if (this.errorCount) {
         return false;
     }
   });

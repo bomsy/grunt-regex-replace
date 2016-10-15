@@ -1,0 +1,1 @@
+Keep [nochange] Expect [bar] changesrc.txt

@@ -97,5 +97,28 @@ exports['regex-replace'] = {
   //test specifying 'use: function' option
   'usestring': function(test){
     checkFile({test: test, file: 'usestring.txt'});
+  },
+  //test a single dest target using a string
+  'dest': function(test) {
+    test.expect(2);
+
+    var expected1 = grunt.file.read('test/expected/unchangesrc.txt');
+    var expected2 = grunt.file.read('test/expected/changedest.txt');
+
+    var actual1 = grunt.file.read('test/actual/unchangesrc.txt');
+    var actual2 = grunt.file.read('test/actual/changedest.txt');
+
+    test.equal(actual1, expected1, 'not equal');
+    test.equal(actual2, expected2, 'not equal');
+
+    test.done();
+  },
+  //test dest array one item
+  'onedest': function(test) {
+    checkFile({ test: test, file: 'changesrc.txt' });
+  },
+  //test the ignored dest item
+  'ignoredest': function(test) {
+    checkFile({ test: test, file: 'ignoredest.txt' });
   }
 };
