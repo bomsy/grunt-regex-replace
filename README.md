@@ -66,6 +66,50 @@ Also supports templates, e.g
     src: ['foo/bar.js','foo/foo.js'],
     src: ['<%= pkg.id %>/bar.js', 'foo/foo.js']
 
+### dest property
+Takes a file path string or an array of file paths that match the src paths. If a `dest` file is specified for the corresponding
+`src` file, the `src` file remains unchanged and the changes are applied to the `dest` file. e.g
+
+1) `bla.js` will not be overwritten but `foo.js` will contain the new changes.
+```
+ {
+    src: ['bla.js'],
+    dest: 'foo.js'
+    actions: [{
+       search: 'foo',
+       replace: 'bar'
+    }]
+ }
+```
+
+2) `bla.js` and `foo.js` will be affected as above. `baz.js` will be overwritten.
+
+```
+ {
+    src: ['bla.js', 'baz.js'],
+    dest: ['foo.js']
+    actions: [{
+       search: 'foo',
+       replace: 'bar'
+    }]
+ }
+```
+
+3) `bla.js` and  `foo.js` will be affected as above. `baz.js` will be ignored.
+
+```
+ {
+    src: ['bla.js'],
+    dest: ['foo.js', 'baz.js']
+    actions: [{
+       search: 'foo',
+       replace: 'bar'
+    }]
+ }
+```
+
+
+
 ### actions property (array | function)
 Accepts an array of objects or a function (which returns an array of objects) representing the actions to take place. Each action contains an optional `name` property, an optional `use` property, a `search` property, a `replace` property and
 an optional `flags` property. Here are some examples of the object.
