@@ -75,10 +75,6 @@ Takes a file path string or an array of file paths that match the src paths. If 
  {
     src: ['bla.js'],
     dest: 'foo.js'
-    actions: [{
-       search: 'foo',
-       replace: 'bar'
-    }]
  }
 ```
 
@@ -88,10 +84,6 @@ Takes a file path string or an array of file paths that match the src paths. If 
  {
     src: ['bla.js', 'baz.js'],
     dest: ['foo.js']
-    actions: [{
-       search: 'foo',
-       replace: 'bar'
-    }]
  }
 ```
 
@@ -101,10 +93,6 @@ Takes a file path string or an array of file paths that match the src paths. If 
  {
     src: ['bla.js'],
     dest: ['foo.js', 'baz.js']
-    actions: [{
-       search: 'foo',
-       replace: 'bar'
-    }]
  }
 ```
 
