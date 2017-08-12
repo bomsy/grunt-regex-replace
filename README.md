@@ -1,6 +1,6 @@
 # grunt-regex-replace
 
-[![NPM](https://nodei.co/npm/grunt-regex-replace.png?downloads=true)](https://npmjs.org/package/grunt-regex-replace)
+[![NPM](https://nodei.co/npm/grunt-regex-replace.png?downloads=true&downloadRank=true&stars=true)](https://npmjs.org/package/grunt-regex-replace)
 
 Grunt plugin to search and replace text content of files based on regular expression patterns
 
