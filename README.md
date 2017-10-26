@@ -23,55 +23,60 @@ grunt.loadNpmTasks('grunt-regex-replace');
 ## How to use
 Here is a sample of the definition within the object passed to grunt.initConfig
 
-###Sample Code
+### Sample Code
 
-    "regex-replace": {
-        foofoo: { //specify a target with any name
-            src: ['foo/bar.js'],
-            actions: [
-                {
-                    name: 'bar',
-                    search: '(^|\\s)console.log',
-                    replace: '//console.log',
-                    flags: 'g'
-                },{
-                    name: 'foo',
-                    search: 'var v = \'[^\']*\';',
-                    replace: 'var v = \'<%= pkg.release.version_code %>\';',
-                    flags: ''
-                },{
-                   name: 'foobar',
-                   search: new RegExp('\\w+'),
-                   replace: function() {
-                   	    return 'foofoo';
-                   }
-                },{
-                   name: 'baz',
-                   use: function(data) {
-                     return data.sourceContent.length > 3;
-                   },
-                   search: 'abc',
-                   replace: 'abcde'
-                }
-            ]
-        }
+```js
+"regex-replace": {
+    foofoo: { //specify a target with any name
+        src: ['foo/bar.js'],
+        actions: [
+            {
+                name: 'bar',
+                search: '(^|\\s)console.log',
+                replace: '//console.log',
+                flags: 'g'
+            },{
+                name: 'foo',
+                search: 'var v = \'[^\']*\';',
+                replace: 'var v = \'<%= pkg.release.version_code %>\';',
+                flags: ''
+            },{
+               name: 'foobar',
+               search: new RegExp('\\w+'),
+               replace: function() {
+                    return 'foofoo';
+               }
+            },{
+               name: 'baz',
+               use: function(data) {
+                 return data.sourceContent.length > 3;
+               },
+               search: 'abc',
+               replace: 'abcde'
+            }
+        ]
     }
+}
+```
 
 ### src property
 Takes the path to the files relative to the grunt file, it accepts strings as well as an array of file paths.
 Also supports templates, e.g
 
-    src: 'customisation/*.js',
-    src: '**/*.js',
-    src: ['foo/bar.js','foo/foo.js'],
-    src: ['<%= pkg.id %>/bar.js', 'foo/foo.js']
+```js
+src: 'customisation/*.js',
+src: '**/*.js',
+src: ['foo/bar.js','foo/foo.js'],
+src: ['<%= pkg.id %>/bar.js', 'foo/foo.js']
+```
 
 ### dest property
 Takes a file path string or an array of file paths that match the src paths. If a `dest` file is specified for the corresponding
 `src` file, the `src` file remains unchanged and the changes are applied to the `dest` file. e.g
 
 1) `bla.js` will not be overwritten but `foo.js` will contain the new changes.
-```
+
+```js
  {
     src: ['bla.js'],
     dest: 'foo.js'
@@ -80,7 +85,7 @@ Takes a file path string or an array of file paths that match the src paths. If 
 
 2) `bla.js` and `foo.js` will be affected as above. `baz.js` will be overwritten.
 
-```
+```js
  {
     src: ['bla.js', 'baz.js'],
     dest: ['foo.js']
@@ -89,36 +94,37 @@ Takes a file path string or an array of file paths that match the src paths. If 
 
 3) `bla.js` and  `foo.js` will be affected as above. `baz.js` will be ignored.
 
-```
+```js
  {
     src: ['bla.js'],
     dest: ['foo.js', 'baz.js']
  }
 ```
 
-
-
 ### actions property (array | function)
 Accepts an array of objects or a function (which returns an array of objects) representing the actions to take place. Each action contains an optional `name` property, an optional `use` property, a `search` property, a `replace` property and
 an optional `flags` property. Here are some examples of the object.
 
-    {
-        name: 'foo',
-        use: function(data) {
-          return data.file.indexOf('.skip') === -1 && data.sourceContent.indexOf('console.log') > -1;
-        }, //also accepts a template string or any value
-        search: '(^|\\s)console.log',
-        replace: '//console.log',
-        flags: 'gi'
-    }
+```js
+{
+    name: 'foo',
+    use: function(data) {
+      return data.file.indexOf('.skip') === -1 && data.sourceContent.indexOf('console.log') > -1;
+    }, //also accepts a template string or any value
+    search: '(^|\\s)console.log',
+    replace: '//console.log',
+    flags: 'gi'
+}
 
-    {
-        name: 'bar',
-        search: /\\w+/g, //also accepts new RegExp()
-        replace: function() {
-            return 'foo';
-        }
+{
+    name: 'bar',
+    search: /\\w+/g, //also accepts new RegExp()
+    replace: function() {
+        return 'foo';
     }
+}
+```
+
 #### name property
 A string value.
 
@@ -144,15 +150,15 @@ A regular expression string or object defining the text content to be found.
 #### replace property (substr | function)
 A string / regular expression pattern or function to replace the text content.
 For the replace function, values that match the parenthesized substring matches are passed as arguments
-```
-    {
-        search: new RegExp(/(\w+)\s(\w+)/),
-        replace: function(arg1, arg2, ... argN) {
-          // arg1 is the full string matched
-          // arg2 is the first parenthesized substring match
-          // argN is the Nth parenthesized substring match
-        }
+```js
+{
+    search: new RegExp(/(\w+)\s(\w+)/),
+    replace: function(arg1, arg2, ... argN) {
+      // arg1 is the full string matched
+      // arg2 is the first parenthesized substring match
+      // argN is the Nth parenthesized substring match
     }
+}
 ```
 See [MDN Documentation](https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_parenthesized_substring_matches) for details on "using parenthesized substring matches."
 
@@ -183,6 +189,6 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 * `v0.1.0` - First Release
 
 ## License
+
 Copyright (c) 2012 Hubert Boma Manilla  
 Licensed under the MIT license.
-=======
